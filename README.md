@@ -1,4 +1,4 @@
-# final-project-2023-hair++
+# final project 2023 hair++
 
 ## Project setup
 
