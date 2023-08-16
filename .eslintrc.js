@@ -1,3 +1,4 @@
+/* Test */
 module.exports = {
   root: true,
   env: {
