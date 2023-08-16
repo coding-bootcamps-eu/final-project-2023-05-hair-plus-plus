@@ -1,0 +1,36 @@
+*,
+* ::before,
+* ::after {
+  box-sizing: border-box;
+}
+@import url(https://fonts.bunny.net/css?family=aboreto:400);
+
+/* Anpassung für Monitore */
+@media screen and (min-width: 1200px) {
+  body {
+    font-size: 22px;
+    background-image: url(./assets/minimalist.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center -300px;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Anpassung für iPad Mini */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 16px;
+    background-image: url(./assets/minimalistIpad.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+header {
+  font-family: "Aboreto", display;
+}
