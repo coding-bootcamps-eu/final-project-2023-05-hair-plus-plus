@@ -15,7 +15,7 @@
         <input v-model="strasse" type="text" id="strasse" />
       </div>
       <div class="form-group">
-        <label for="adresse">Plz:</label>
+        <label for="plz">Plz:</label>
         <input v-model="plz" type="text" id="plz" />
       </div>
       <div class="form-group">
