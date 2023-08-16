@@ -1,6 +1,6 @@
 <template>
   <div class="contact-form">
-    <h1>Kontaktformular</h1>
+    <h1>Kundendaten</h1>
     <form @submit.prevent="submitForm">
       <div class="form-group">
         <label for="name">Name:</label>
@@ -11,29 +11,25 @@
         <input v-model="vorname" type="text" id="vorname" required />
       </div>
       <div class="form-group">
-        <label for="kundenNr">Kundennr.:</label>
-        <input v-model="kundenNr" type="text" id="kundenNr" />
+        <label for="strasse">Straße:</label>
+        <input v-model="strasse" type="text" id="strasse" />
       </div>
       <div class="form-group">
-        <label for="adresse">Adresse:</label>
-        <input v-model="adresse" type="text" id="adresse" />
+        <label for="plz">Plz:</label>
+        <input v-model="plz" type="text" id="plz" />
+      </div>
+      <div class="form-group">
+        <label for="stadt">Stadt:</label>
+        <input v-model="stadt" type="text" id="stadt" />
       </div>
       <div class="form-group">
         <label for="geburtstag">Geburtstag:</label>
         <input v-model="geburtstag" type="date" id="geburtstag" />
       </div>
-      <div class="form-group">
-        <label for="tel">Tel.:</label>
-        <input v-model="tel" type="tel" id="tel" />
-      </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input v-model="email" type="email" id="email" required />
-      </div>
     </form>
     <div class="button-container">
       <button @click="routeToStartPage">Zurück</button>
-      <button type="submit">Absenden</button>
+      <button @click="submitForm">Speichern</button>
     </div>
   </div>
 </template>
@@ -45,11 +41,10 @@ export default {
       customers: [],
       name: "",
       vorname: "",
-      kundenNr: "",
-      adresse: "",
+      strasse: "",
+      plz: "",
+      stadt: "",
       geburtstag: "",
-      tel: "",
-      email: "",
     };
   },
   methods: {
@@ -58,13 +53,36 @@ export default {
         "Formulardaten:",
         this.name,
         this.vorname,
-        this.kundenNr,
-        this.adresse,
-        this.geburtstag,
-        this.tel,
-        this.email
+        this.strasse,
+        this.plz,
+        this.stadt,
+        this.geburtstag
       );
+      const customer = {
+        surName: this.name,
+        firstName: this.vorname,
+        address: {
+          street: this.strasse,
+          zipCode: this.plz,
+          city: this.stadt,
+        },
+        dayOfBirth: this.geburtstag,
+      };
+      const URL = "http://localhost:3333/customers";
+
+      fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(customer),
+      })
+        .then((req) => req.json())
+        .then((request) => {
+          console.log(request);
+        });
     },
+    sendDataToApi() {},
     routeToStartPage() {
       this.$router.push("/");
     },
