@@ -35,29 +35,26 @@
 </template>
 
 <script>
+import { useCustomerStore } from "../stores/CustomerStore";
+
 export default {
   data() {
     return {
-      customers: [],
       name: "",
       vorname: "",
       strasse: "",
       plz: "",
       stadt: "",
       geburtstag: "",
+      id: "",
+      customerStore: null,
     };
+  },
+  created() {
+    this.customerStore = useCustomerStore();
   },
   methods: {
     submitForm() {
-      console.log(
-        "Formulardaten:",
-        this.name,
-        this.vorname,
-        this.strasse,
-        this.plz,
-        this.stadt,
-        this.geburtstag
-      );
       const customer = {
         surName: this.name,
         firstName: this.vorname,
@@ -69,7 +66,6 @@ export default {
         dayOfBirth: this.geburtstag,
       };
       const URL = "http://localhost:3333/customers";
-
       fetch(URL, {
         method: "POST",
         headers: {
@@ -77,12 +73,19 @@ export default {
         },
         body: JSON.stringify(customer),
       })
-        .then((req) => req.json())
-        .then((request) => {
-          console.log(request);
+        .then((res) => res.json())
+        .then((response) => {
+          this.customerStore.addCustomer(response);
+          this.id = response.id;
+          this.$router.push("/customercard/" + this.id);
+        })
+        .catch((error) => {
+          console.error(
+            "Es gab einen Fehler beim Speichern des Kunden:",
+            error
+          );
         });
     },
-    sendDataToApi() {},
     routeToStartPage() {
       this.$router.push("/");
     },
