@@ -31,6 +31,9 @@ export const useCustomerStore = defineStore("customer", {
     },
   },
   actions: {
+    getCustomerById(id) {
+      return this.customers.find((customer) => customer.id === id);
+    },
     addCustomer(newCustomer) {
       this.customers.push(newCustomer);
     },
