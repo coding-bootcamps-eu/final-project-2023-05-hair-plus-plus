@@ -11,17 +11,21 @@
 </template>
 
 <script>
+import { useCustomerStore } from "../stores/CustomerStore";
+
 export default {
   name: "StartPageView",
   components: {},
   methods: {
     viewCustomers() {
       this.$router.push("/customerssearch");
-      //alert("Kunden anzeigen");
     },
     routeToCustomerForm() {
       this.$router.push("/customerform");
     },
+  },
+  mounted() {
+    this.customerStore = useCustomerStore();
   },
 };
 </script>

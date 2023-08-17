@@ -21,7 +21,7 @@ const routes = [
     component: SearchCustomerView,
   },
   {
-    path: "/customercard",
+    path: "/customercards/:id",
     name: "customercard",
     component: CardCustomerView,
   },
