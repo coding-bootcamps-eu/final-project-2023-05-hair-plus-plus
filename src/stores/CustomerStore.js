@@ -29,6 +29,9 @@ export const useCustomerStore = defineStore("customer", {
     customerState() {
       return this.customers.filter((customer) => customer.id);
     },
+    getCustomerById: (state) => (customerId) => {
+      return state.customers.find((customer) => customer.id === customerId);
+    },
   },
   actions: {
     addCustomer(newCustomer) {

@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import FormCustomerView from "../views/FormCustomerView.vue";
 import SearchCustomerView from "../views/SearchCustomerView.vue";
-import CardCustomerView from "../views/CardCustomerView.vue";
+import CardCustomerView from "@/views/CardCustomerView.vue";
 
 const routes = [
   {
@@ -21,8 +21,8 @@ const routes = [
     component: SearchCustomerView,
   },
   {
-    path: "/customercards/:id",
-    name: "customercard",
+    path: "/customer/:id",
+    name: "customer",
     component: CardCustomerView,
   },
 ];

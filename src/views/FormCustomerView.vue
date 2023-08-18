@@ -3,12 +3,12 @@
     <h1>Kundendaten</h1>
     <form @submit.prevent="submitForm">
       <div class="form-group">
-        <label for="name">Name:</label>
-        <input v-model="name" type="text" id="name" required />
-      </div>
-      <div class="form-group">
         <label for="vorname">Vorname:</label>
         <input v-model="vorname" type="text" id="vorname" required />
+      </div>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input v-model="name" type="text" id="name" required />
       </div>
       <div class="form-group">
         <label for="strasse">Straße:</label>
@@ -76,8 +76,7 @@ export default {
         .then((res) => res.json())
         .then((response) => {
           this.customerStore.addCustomer(response);
-          this.id = response.id;
-          this.$router.push("/customercard/" + this.id);
+          this.$router.push("/customer/" + response.id);
         })
         .catch((error) => {
           console.error(
@@ -95,7 +94,7 @@ export default {
 
 <style scoped>
 .contact-form {
-  color: #ccc;
+  color: #060606;
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
@@ -109,6 +108,7 @@ export default {
 }
 
 label {
+  color: #060606;
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
