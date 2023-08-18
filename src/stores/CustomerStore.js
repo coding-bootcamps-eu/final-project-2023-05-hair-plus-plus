@@ -29,11 +29,11 @@ export const useCustomerStore = defineStore("customer", {
     customerState() {
       return this.customers.filter((customer) => customer.id);
     },
+    getCustomerById: (state) => (customerId) => {
+      return state.customers.find((customer) => customer.id === customerId);
+    },
   },
   actions: {
-    getCustomerById(id) {
-      return this.customers.find((customer) => customer.id === id);
-    },
     addCustomer(newCustomer) {
       this.customers.push(newCustomer);
     },
