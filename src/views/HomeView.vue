@@ -1,19 +1,28 @@
 <template>
-  <div class="header-container">
-    <h1 class="logo">Hair++</h1>
-  </div>
-  <div class="btn-container">
-    <button @click="routeToCustomerForm" type="button">+Kunde</button>
-    <button @click="viewCustomers" type="button">++Kunden</button>
-  </div>
+  <header>
+    <div class="header-container">
+      <h1 class="logo">Hair++</h1>
+    </div>
+  </header>
+  <main>
+    <div class="btn-container">
+      <button @click="routeToCustomerForm" type="button">+Kunde</button>
+      <button @click="viewCustomers" type="button">++Kunden</button>
+    </div>
+  </main>
+  <AppFooter />
 </template>
 
 <script>
 import { useCustomerStore } from "../stores/CustomerStore";
+import { useServiceStore } from "../stores/ServiceStore";
+import AppFooter from "@/components/AppFooter.vue";
 
 export default {
-  name: "StartPageView",
-  components: {},
+  name: "HomeView",
+  components: {
+    AppFooter,
+  },
   methods: {
     viewCustomers() {
       this.$router.push("/customerssearch");
@@ -24,6 +33,7 @@ export default {
   },
   mounted() {
     this.customerStore = useCustomerStore();
+    this.useServiceStore = useServiceStore();
   },
 };
 </script>
@@ -35,11 +45,12 @@ export default {
   display: flex;
   justify-content: center;
   padding: 10px;
+  margin-top: 160px;
 }
 .btn-container {
   display: flex;
-  margin-top: 80px;
-  gap: 200px;
+  margin-top: 10px;
+  gap: 130px;
 }
 button {
   padding: 10px 20px 10px 20px;

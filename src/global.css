@@ -7,19 +7,12 @@
 
 body {
   font-size: 22px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center -300px;
   min-height: 100vh;
-  margin: 0;
-  padding: 20px;
   display: flex;
   justify-content: center;
+  background-color: rgb(191, 189, 188);
 }
 
 header {
   font-family: "Aboreto", display;
-}
-body {
-  background-color: rgb(191, 189, 188);
 }

@@ -7,13 +7,28 @@
         <p>{{ customer.address.zipCode }} {{ customer.address.city }}</p>
         <p>geb. {{ customer.dayOfBirth }}</p>
       </div>
-      <div>
-        <button @click="routeSelectServices">Service</button>
+      <div class="history-btn">
+        <button @click="routeSelectServices">++Service</button>
       </div>
     </div>
 
     <div class="history-container">
       <ul>
+        <li>
+          Lorem ipsum dolor sit amet consectetu jorem ipsum dolor sit amet
+          consectetu
+        </li>
+        <li>
+          Lorem ipsum dolor sit amet consectetu lorem ipsum dolor sit amet
+          consectetu
+        </li>
+        <li>
+          Lorem ipsum dolor sit amet consectetu sorem ipsum dolor sit amet
+          consectetu
+        </li>
+        <li>Lorem ipsum dolor sit amet consectetu</li>
+        <li>Lorem ipsum dolor sit amet consectetu</li>
+        <li>Lorem ipsum dolor sit amet consectetu</li>
         <li>Lorem ipsum dolor sit amet consectetu</li>
         <li>Lorem ipsum dolor sit amet consectetu</li>
         <li>Lorem ipsum dolor sit amet consectetu</li>
@@ -23,18 +38,21 @@
         <li>Lorem ipsum dolor sit amet consectetu</li>
       </ul>
     </div>
-
-    <div class="btn-container">
-      <button @click="routeToHome">&lt; Home</button>
-      <button @click="routeToSearch">Suche ></button>
-    </div>
   </div>
+  <div class="btn-container">
+    <button @click="routeToHome">&lt; Home</button>
+  </div>
+  <AppFooter />
 </template>
 
 <script>
 import { useCustomerStore } from "@/stores/CustomerStore";
+import AppFooter from "@/components/AppFooter.vue";
 
 export default {
+  components: {
+    AppFooter,
+  },
   data() {
     return {
       store: useCustomerStore(),
@@ -65,45 +83,47 @@ export default {
 <style scoped>
 body {
   height: 100%;
-  margin: 0;
-  box-sizing: border-box;
-}
-.customer-card {
-  border: 5px solid black;
-  border-radius: 5px;
-  margin: 100px;
-  padding: 30px;
-  width: 1250px;
-  height: 700px;
-  box-sizing: border-box;
 }
 
-.customer-data {
-  font-size: px;
-  border: 2px solid black;
-  width: 550px;
-  padding: 20px;
-  box-sizing: border-box;
+.customer-card {
+  border: 3px solid black;
+  border-radius: 15px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box; /* Dies stellt sicher, dass das Padding und der Rand nicht zur Gesamtbreite hinzugefügt werden */
+  margin-top: 200px;
 }
+
 .top-of-card {
   display: flex;
   justify-content: space-between;
   gap: 250px;
 }
-.history-container {
+
+.customer-data {
+  background-color: rgb(212, 215, 216);
+  font-size: 20px;
   border: 2px solid black;
-  width: 1180px;
-  height: 310px;
-  margin-top: 60px;
+  border-radius: 15px;
+  width: 400px;
   padding: 20px;
+  box-sizing: border-box;
+}
+
+.history-container {
+  width: 100%;
+  font-size: 20px;
+  overflow: auto;
+  max-height: 25vh;
+  margin-top: 20px;
+  padding: 10px 20px 10px 20px;
+  box-sizing: border-box;
 }
 
 button {
-  margin-top: 100px;
-  padding: 10px 20px 10px 20px;
-  width: 320px;
   font-family: "Aboreto", display;
   font-size: 25px;
+  width: 200px;
   background-color: rgb(212, 215, 216);
   border-radius: 6px;
   border-color: black;
@@ -115,8 +135,10 @@ button {
 button:hover {
   box-shadow: 0px 0px 10px 3px rgb(3, 3, 3);
 }
+
 .btn-container {
   display: flex;
   justify-content: space-between;
+  margin-top: 50px;
 }
 </style>

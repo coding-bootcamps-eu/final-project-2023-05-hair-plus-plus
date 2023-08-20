@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import FormCustomerView from "../views/FormCustomerView.vue";
 import SearchCustomerView from "../views/SearchCustomerView.vue";
 import CardCustomerView from "@/views/CardCustomerView.vue";
+import ServiceView from "../views/ServiceView.vue";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: "/customer/:id",
     name: "customer",
     component: CardCustomerView,
+  },
+  {
+    path: "/selectservicesview",
+    name: "selectservicesview",
+    component: ServiceView,
   },
 ];
 
