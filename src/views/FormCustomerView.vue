@@ -1,43 +1,51 @@
 <template>
+  <AppHeader />
   <div class="contact-form">
-    <h1>Kundendaten</h1>
+    <h1>KUNDENDATEN</h1>
     <form @submit.prevent="submitForm">
       <div class="form-group">
-        <label for="vorname">Vorname:</label>
+        <label for="vorname">Vorname</label>
         <input v-model="vorname" type="text" id="vorname" required />
       </div>
       <div class="form-group">
-        <label for="name">Name:</label>
+        <label for="name">Name</label>
         <input v-model="name" type="text" id="name" required />
       </div>
       <div class="form-group">
-        <label for="strasse">Straße:</label>
+        <label for="strasse">Straße</label>
         <input v-model="strasse" type="text" id="strasse" />
       </div>
       <div class="form-group">
-        <label for="plz">Plz:</label>
+        <label for="plz">Plz</label>
         <input v-model="plz" type="text" id="plz" />
       </div>
       <div class="form-group">
-        <label for="stadt">Stadt:</label>
+        <label for="stadt">Stadt</label>
         <input v-model="stadt" type="text" id="stadt" />
       </div>
       <div class="form-group">
-        <label for="geburtstag">Geburtstag:</label>
+        <label for="geburtstag">Geburtstag</label>
         <input v-model="geburtstag" type="date" id="geburtstag" />
       </div>
     </form>
     <div class="button-container">
-      <button @click="routeToStartPage">Zurück</button>
+      <button @click="routeToStartPage">&lt; Zurück</button>
       <button @click="submitForm">Speichern</button>
     </div>
   </div>
+  <AppFooter />
 </template>
 
 <script>
 import { useCustomerStore } from "../stores/CustomerStore";
+import AppHeader from "@/components/AppHeader.vue";
+import AppFooter from "@/components/AppFooter.vue";
 
 export default {
+  components: {
+    AppHeader,
+    AppFooter,
+  },
   data() {
     return {
       name: "",
@@ -46,6 +54,7 @@ export default {
       plz: "",
       stadt: "",
       geburtstag: "",
+      textearea: "",
       id: "",
       customerStore: null,
     };
@@ -93,13 +102,17 @@ export default {
 </script>
 
 <style scoped>
+@import url(https://fonts.bunny.net/css?family=aboreto:400);
+h1 {
+  font-family: "Aboreto", display;
+}
 .contact-form {
   color: #060606;
-  max-width: 400px;
-  margin: 0 auto;
+  max-width: 500px;
+  margin-top: 200px;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid black;
+  border-radius: 15px;
 }
 
 .form-group {
@@ -111,25 +124,32 @@ label {
   color: #060606;
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
 }
 
 input {
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 10px;
 }
 .button-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 200px;
+  margin-top: 30px;
 }
+
 button {
-  padding: 8px 15px;
-  background-color: rgb(88, 91, 112);
-  color: white;
-  border: none;
-  border-radius: 3px;
+  font-family: "Aboreto", display;
+  font-size: 18px;
+  background-color: rgb(212, 215, 216);
+  border-radius: 6px;
+  border-color: black;
+  color: rgb(6, 5, 5);
   cursor: pointer;
+  transition: box-shadow 0.5s ease;
+  width: 330px;
 }
 </style>
