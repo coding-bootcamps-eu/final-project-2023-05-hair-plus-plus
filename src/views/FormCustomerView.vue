@@ -54,7 +54,6 @@ export default {
       plz: "",
       stadt: "",
       geburtstag: "",
-      textearea: "",
       id: "",
       customerStore: null,
     };
@@ -128,6 +127,7 @@ label {
 }
 
 input {
+  font-family: "Courier New", Courier, monospace;
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
@@ -143,7 +143,7 @@ input {
 
 button {
   font-family: "Aboreto", display;
-  font-size: 18px;
+  font-size: 20px;
   background-color: rgb(212, 215, 216);
   border-radius: 6px;
   border-color: black;
@@ -151,5 +151,8 @@ button {
   cursor: pointer;
   transition: box-shadow 0.5s ease;
   width: 330px;
+}
+button:hover {
+  box-shadow: 0px 0px 10px 3px rgb(3, 3, 3);
 }
 </style>
