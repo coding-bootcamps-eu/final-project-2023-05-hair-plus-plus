@@ -120,6 +120,7 @@ h1 {
 .service-list {
   font-family: "Courier New", Courier, monospace;
   font-size: 25px;
+  padding: 4px;
 }
 .service-item {
   display: flex;
@@ -165,17 +166,20 @@ input {
   font-size: 20px;
 }
 
+input:focus {
+  outline: 2px solid black;
+}
+
 .btn-container {
   display: flex;
-  justify-content: center;
-  margin: 20px;
-  gap: 20px;
+  gap: 200px;
+  margin-top: 25px;
 }
 
 button {
   font-family: "Aboreto", display;
   font-size: 20px;
-  width: 200px;
+  width: 150px;
   background-color: rgb(212, 215, 216);
   border-radius: 6px;
   border-color: black;

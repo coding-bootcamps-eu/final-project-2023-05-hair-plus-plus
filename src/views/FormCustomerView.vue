@@ -108,7 +108,7 @@ h1 {
 .contact-form {
   color: #060606;
   max-width: 500px;
-  margin-top: 200px;
+  margin-top: 135px;
   padding: 20px;
   border: 1px solid black;
   border-radius: 15px;
@@ -124,6 +124,7 @@ label {
   display: block;
   margin-bottom: 5px;
   font-family: "Courier New", Courier, monospace;
+  font-size: 22px;
 }
 
 input {
@@ -132,7 +133,13 @@ input {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 10px;
+  font-size: 25px;
 }
+
+input:focus {
+  outline: 2px solid black;
+}
+
 .button-container {
   display: flex;
   justify-content: center;

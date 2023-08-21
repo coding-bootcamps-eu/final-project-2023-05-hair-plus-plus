@@ -3,7 +3,7 @@
   <div class="customer-card">
     <div class="top-of-card">
       <div class="customer-data">
-        <p>{{ customer.surName }} {{ customer.firstName }}</p>
+        <p>{{ customer.firstName }} {{ customer.surName }}</p>
         <p>{{ customer.address.street }}</p>
         <p>{{ customer.address.zipCode }} {{ customer.address.city }}</p>
         <p>geb. {{ customer.dayOfBirth }}</p>
@@ -27,6 +27,7 @@
   </div>
   <div class="btn-container">
     <button @click="routeToHome" class="home-btn">&lt; Home</button>
+    <button @click="routeToSearch" class="home-btn">Suche &gt;</button>
   </div>
   <AppFooter />
 </template>
@@ -66,8 +67,11 @@ export default {
     routeToHome() {
       this.$router.push("/");
     },
+    routeToSearch() {
+      this.$router.push("/customerssearch");
+    },
     routeSelectServices() {
-      this.$router.push("/selectservicesview");
+      this.$router.push("/selectservices/" + this.customerId);
     },
   },
 };
@@ -115,7 +119,7 @@ body {
 }
 
 .service-btn {
-  margin-top: 200px;
+  margin-top: 0px;
   font-family: "Aboreto", display;
   font-size: 25px;
   width: 200px;
