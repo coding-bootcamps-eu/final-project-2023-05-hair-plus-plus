@@ -91,7 +91,7 @@ h1 {
 button {
   font-family: "Aboreto", display;
   font-size: 20px;
-  width: 200px;
+  width: 150px;
   background-color: rgb(212, 215, 216);
   border-radius: 6px;
   border-color: black;
@@ -117,18 +117,27 @@ input {
   font-size: 25px;
   overflow: auto;
   max-height: 45vh;
-  margin-top: 35px;
+  margin-top: 15px;
 }
 .search-input {
   margin-top: 150px;
 }
+
+input:focus {
+  outline: 2px solid black;
+}
+
 ul {
   list-style: none;
-  padding: 10px;
-  margin: 0;
+  margin: 0px;
+  padding: 4px;
+}
+li {
+  margin-top: 10px;
 }
 
 ul li:hover {
-  color: rgb(247, 247, 239);
+  color: black;
+  background-color: rgb(255, 255, 255);
 }
 </style>

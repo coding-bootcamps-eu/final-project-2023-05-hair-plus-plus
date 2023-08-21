@@ -4,6 +4,7 @@ import FormCustomerView from "../views/FormCustomerView.vue";
 import SearchCustomerView from "../views/SearchCustomerView.vue";
 import CardCustomerView from "@/views/CardCustomerView.vue";
 import ServiceView from "../views/ServiceView.vue";
+import AppImprint from "@/components/AppImprint.vue";
 
 const routes = [
   {
@@ -27,9 +28,15 @@ const routes = [
     component: CardCustomerView,
   },
   {
-    path: "/selectservicesview",
-    name: "selectservicesview",
+    path: "/selectservices/:id",
+    name: "selectservices",
     component: ServiceView,
+  },
+
+  {
+    path: "/impressum",
+    name: "impressum",
+    component: AppImprint,
   },
 ];
 

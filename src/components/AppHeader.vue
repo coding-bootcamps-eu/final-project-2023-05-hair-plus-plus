@@ -19,7 +19,7 @@
 .header-container {
   position: fixed;
   left: 0;
-  margin-top: -30px;
-  padding: 30px;
+  margin-top: -60px;
+  padding: 25px;
 }
 </style>
