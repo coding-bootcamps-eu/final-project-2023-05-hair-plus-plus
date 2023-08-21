@@ -1,4 +1,5 @@
 <template>
+  <AppHeader />
   <div class="customer-card">
     <div class="top-of-card">
       <div class="customer-data">
@@ -8,67 +9,59 @@
         <p>geb. {{ customer.dayOfBirth }}</p>
       </div>
       <div class="history-btn">
-        <button @click="routeSelectServices">++Service</button>
+        <button @click="routeSelectServices" class="service-btn">
+          ++Service
+        </button>
       </div>
     </div>
 
     <div class="history-container">
-      <ul>
-        <li>
-          Lorem ipsum dolor sit amet consectetu jorem ipsum dolor sit amet
-          consectetu
-        </li>
-        <li>
-          Lorem ipsum dolor sit amet consectetu lorem ipsum dolor sit amet
-          consectetu
-        </li>
-        <li>
-          Lorem ipsum dolor sit amet consectetu sorem ipsum dolor sit amet
-          consectetu
-        </li>
-        <li>Lorem ipsum dolor sit amet consectetu</li>
-        <li>Lorem ipsum dolor sit amet consectetu</li>
-        <li>Lorem ipsum dolor sit amet consectetu</li>
-        <li>Lorem ipsum dolor sit amet consectetu</li>
-        <li>Lorem ipsum dolor sit amet consectetu</li>
-        <li>Lorem ipsum dolor sit amet consectetu</li>
-        <li>Lorem ipsum dolor sit amet consectetu</li>
-        <li>Lorem ipsum dolor sit amet consectetu</li>
-        <li>Lorem ipsum dolor sit amet consectetu</li>
-        <li>Lorem ipsum dolor sit amet consectetu</li>
-      </ul>
+      <!--  <p>{{ service.title }}</p>-->
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus</p>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus</p>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus</p>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus</p>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus</p>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus</p>
     </div>
   </div>
   <div class="btn-container">
-    <button @click="routeToHome">&lt; Home</button>
+    <button @click="routeToHome" class="home-btn">&lt; Home</button>
   </div>
   <AppFooter />
 </template>
 
 <script>
+import { useServiceStore } from "@/stores/ServiceStore";
 import { useCustomerStore } from "@/stores/CustomerStore";
 import AppFooter from "@/components/AppFooter.vue";
+import AppHeader from "@/components/AppHeader.vue";
 
 export default {
   components: {
     AppFooter,
+    AppHeader,
   },
   data() {
     return {
-      store: useCustomerStore(),
+      customerStore: useCustomerStore(),
+      serviceStore: useServiceStore(),
       customer: null,
       customerId: this.$route.params.id,
+      serviceId: this.$route.params.id,
+      service: [],
     };
   },
   created() {
     this.loadCustomer();
+    this.loadService();
   },
   methods: {
     loadCustomer() {
-      this.customer = this.store.getCustomerById(this.customerId);
+      this.customer = this.customerStore.getCustomerById(this.customerId);
     },
-    routeToSearch() {
-      this.$router.push("/customerssearch");
+    loadService() {
+      this.service = this.serviceStore.getServiceById(this.serviceId);
     },
     routeToHome() {
       this.$router.push("/");
@@ -82,15 +75,14 @@ export default {
 
 <style scoped>
 body {
-  height: 100%;
+  max-height: 100vh;
 }
-
 .customer-card {
   border: 3px solid black;
   border-radius: 15px;
   width: 100%;
   padding: 10px;
-  box-sizing: border-box; /* Dies stellt sicher, dass das Padding und der Rand nicht zur Gesamtbreite hinzugefügt werden */
+  box-sizing: border-box;
   margin-top: 200px;
 }
 
@@ -101,6 +93,7 @@ body {
 }
 
 .customer-data {
+  font-family: "Courier New", Courier, monospace;
   background-color: rgb(212, 215, 216);
   font-size: 20px;
   border: 2px solid black;
@@ -113,6 +106,7 @@ body {
 .history-container {
   width: 100%;
   font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
   overflow: auto;
   max-height: 25vh;
   margin-top: 20px;
@@ -120,7 +114,8 @@ body {
   box-sizing: border-box;
 }
 
-button {
+.service-btn {
+  margin-top: 200px;
   font-family: "Aboreto", display;
   font-size: 25px;
   width: 200px;
@@ -131,14 +126,28 @@ button {
   cursor: pointer;
   transition: box-shadow 0.5s ease;
 }
+.home-btn {
+  font-family: "Aboreto", display;
+  font-size: 20px;
+  width: 150px;
+  background-color: rgb(212, 215, 216);
+  border-radius: 6px;
+  border-color: black;
+  color: rgb(6, 5, 5);
+  cursor: pointer;
+  transition: box-shadow 0.5s ease;
+}
 
-button:hover {
+.service-btn:hover {
   box-shadow: 0px 0px 10px 3px rgb(3, 3, 3);
 }
 
+.home-btn:hover {
+  box-shadow: 0px 0px 10px 3px rgb(3, 3, 3);
+}
 .btn-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 </style>

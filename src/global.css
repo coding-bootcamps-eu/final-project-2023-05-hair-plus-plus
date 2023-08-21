@@ -6,13 +6,8 @@
 @import url(https://fonts.bunny.net/css?family=aboreto:400);
 
 body {
-  font-size: 22px;
-  min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   justify-content: center;
   background-color: rgb(191, 189, 188);
-}
-
-header {
-  font-family: "Aboreto", display;
 }

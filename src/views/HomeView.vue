@@ -16,6 +16,8 @@
 <script>
 import { useCustomerStore } from "../stores/CustomerStore";
 import { useServiceStore } from "../stores/ServiceStore";
+import { useSessionStore } from "../stores/SessionStore";
+
 import AppFooter from "@/components/AppFooter.vue";
 
 export default {
@@ -34,6 +36,7 @@ export default {
   mounted() {
     this.customerStore = useCustomerStore();
     this.useServiceStore = useServiceStore();
+    this.useSessionStore = useSessionStore();
   },
 };
 </script>
