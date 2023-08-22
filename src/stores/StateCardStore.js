@@ -33,7 +33,7 @@ export const useStateCardStore = defineStore("stateCard", {
       this.customer = customer;
       this.cardData.sessions = [];
 
-      fetch("http://localhost:3333/sessions")
+      fetch("https://23-mai.hair-plus-plus.api.cbe.uber.space/sessions")
         .then((res) => res.json())
         .then((data) => {
           data.forEach((element) => {
@@ -41,7 +41,7 @@ export const useStateCardStore = defineStore("stateCard", {
               this.cardData.sessions.push(element);
             }
           });
-          fetch("http://localhost:3333/customers", {
+          fetch("https://23-mai.hair-plus-plus.api.cbe.uber.space/customers", {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
@@ -84,7 +84,7 @@ export const useStateCardStore = defineStore("stateCard", {
         services: this.services,
       };
 
-      fetch("http://localhost:3333/sessions", {
+      fetch("https://23-mai.hair-plus-plus.api.cbe.uber.space/sessions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -103,7 +103,7 @@ export const useStateCardStore = defineStore("stateCard", {
     setSelectedService(input) {
       this.selectedService = [];
       this.cardData.sessions = [];
-      const URL = "http://localhost:3333/sessions";
+      const URL = "https://23-mai.hair-plus-plus.api.cbe.uber.space/sessions";
 
       for (const key in input) {
         this.selectedService.push({ servicesId: input[key] });

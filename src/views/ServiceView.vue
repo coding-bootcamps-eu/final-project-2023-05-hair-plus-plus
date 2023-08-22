@@ -67,12 +67,10 @@ export default {
       this.$router.go(-1);
     },
     submitServices() {
-      //const service = [];
-      //const URL = "http://localhost:3333/services";
       console.log(this.$route.params.id);
       this.selectedService = [];
       this.sessions = [];
-      const URL = "http://localhost:3333/sessions";
+      const URL = "https://23-mai.hair-plus-plus.api.cbe.uber.space/sessions";
 
       for (const key in this.selectedServices) {
         this.selectedService.push({ servicesId: this.selectedServices[key] });

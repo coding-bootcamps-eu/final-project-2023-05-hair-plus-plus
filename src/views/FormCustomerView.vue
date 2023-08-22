@@ -73,7 +73,7 @@ export default {
         },
         dayOfBirth: this.geburtstag,
       };
-      const URL = "http://localhost:3333/customers";
+      const URL = "https://23-mai.hair-plus-plus.api.cbe.uber.space/customers";
       fetch(URL, {
         method: "POST",
         headers: {
