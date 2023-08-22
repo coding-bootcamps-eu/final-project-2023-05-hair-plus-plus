@@ -1,6 +1,8 @@
 <template>
   <div class="header-container">
-    <h1 class="logo">Hair++</h1>
+    <router-link id="router-logo" to="/">
+      <h1 class="logo">Hair++</h1>
+    </router-link>
   </div>
 </template>
 
@@ -9,6 +11,11 @@
   font-family: "Aboreto", display;
   font-size: var(--ueberschrift-groesse, 60px);
   color: var(--ueberschrift-farbe, rgb(251, 251, 249));
+}
+
+#router-logo {
+  text-decoration: none;
+  color: black;
 }
 
 .logo:hover {

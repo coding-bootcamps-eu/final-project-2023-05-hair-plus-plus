@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 function initializeStore() {
   let result = [];
-  const URL = "http://localhost:3333/sessions";
+  const URL = "https://23-mai.hair-plus-plus.api.cbe.uber.space/sessions";
 
   fetch(URL, {
     method: "GET",
