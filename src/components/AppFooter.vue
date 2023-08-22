@@ -20,6 +20,7 @@
   width: 100%;
   padding: 20px;
   font-family: "Aboreto", display;
+  background-color: rgb(220, 214, 210);
 }
 
 .footer-content {
