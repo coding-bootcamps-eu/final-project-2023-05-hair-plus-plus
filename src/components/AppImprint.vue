@@ -1,4 +1,5 @@
 <template>
+  <AppHeader />
   <div class="imprint-container">
     <h2>Impressum</h2>
     <section>
@@ -75,7 +76,15 @@
     </section>
   </div>
 </template>
+<script>
+import AppHeader from "@/components/AppHeader.vue";
 
+export default {
+  components: {
+    AppHeader,
+  },
+};
+</script>
 <style scoped>
 .imprint-container {
   max-width: 800px;

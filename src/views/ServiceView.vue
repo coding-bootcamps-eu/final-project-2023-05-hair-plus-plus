@@ -99,7 +99,7 @@ export default {
         .finally((e) => {
           console.log(this.selectedServices);
           console.log(e);
-          this.$router.go(-1);
+          this.$router.push("/customer/" + this.$route.params.id);
         });
     },
   },

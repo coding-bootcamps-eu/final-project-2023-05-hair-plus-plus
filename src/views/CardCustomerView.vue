@@ -3,9 +3,6 @@
   <div class="customer-card">
     <div class="top-of-card">
       <div class="customer-data">
-        <!-- Getter für den Kunden -->
-        <p>{{ stateCardStore.getCustomer }}</p>
-
         <!-- Getter für den Vornamen und Nachnamen -->
         <p>{{ stateCardStore.getFirstName }} {{ stateCardStore.getSurName }}</p>
 
@@ -30,9 +27,12 @@
     </div>
 
     <div class="history-container">
-      <!-- Iteriere über die Sessions im cardData -->
-      <div v-for="session in stateCardStore.getSessions" :key="session.id">
-        <p>{{ Date(session.date) }}</p>
+      <!-- Iteriere über die Sessions im cardData in umgekehrter Reihenfolge -->
+      <div
+        v-for="session in stateCardStore.getSessions.slice().reverse()"
+        :key="session.id"
+      >
+        <p>{{ new Date(session.date).toLocaleDateString("de-DE") }}</p>
         <div v-for="service in session.services" :key="service.servicesId">
           <!-- Hier können Sie die relevanten Daten für jeden Service anzeigen. Beispiel: -->
           <p>Service ID: {{ service.servicesId }}</p>
