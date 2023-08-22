@@ -67,28 +67,42 @@ export default {
       this.$router.go(-1);
     },
     submitServices() {
-      const service = [];
-      const URL = "http://localhost:3333/services";
+      //const service = [];
+      //const URL = "http://localhost:3333/services";
+      console.log(this.$route.params.id);
+      this.selectedService = [];
+      this.sessions = [];
+      const URL = "http://localhost:3333/sessions";
+
+      for (const key in this.selectedServices) {
+        this.selectedService.push({ servicesId: this.selectedServices[key] });
+      }
+      const data = {
+        customerId: this.$route.params.id,
+        info: "Kommt Später",
+        date: Date.now(),
+        services: this.selectedService,
+      };
+
       fetch(URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(service),
+        body: JSON.stringify(data),
       })
-        .then((res) => res.json())
-        .then((response) => {
-          this.serviceStore.addService(response);
-          this.$router.push("/customer/" + response.id);
+        .then((req) => req.json())
+        .then((res) => {
+          this.sessions.push(res);
         })
         .catch((error) => {
-          console.error(
-            "Es gab einen Fehler beim Speichern des Kunden:",
-            error
-          );
+          console.error("Fehler bei der Anfrage:", error);
+        })
+        .finally((e) => {
+          console.log(this.selectedServices);
+          console.log(e);
+          this.$router.go(-1);
         });
-      console.log(this.selectedServices);
-      this.$router.go(-1);
     },
   },
   computed: {

@@ -3,11 +3,25 @@
   <div class="customer-card">
     <div class="top-of-card">
       <div class="customer-data">
-        <p>{{ customer.firstName }} {{ customer.surName }}</p>
-        <p>{{ customer.address.street }}</p>
-        <p>{{ customer.address.zipCode }} {{ customer.address.city }}</p>
-        <p>geb. {{ customer.dayOfBirth }}</p>
+        <!-- Getter für den Kunden -->
+        <p>{{ stateCardStore.getCustomer }}</p>
+
+        <!-- Getter für den Vornamen und Nachnamen -->
+        <p>{{ stateCardStore.getFirstName }} {{ stateCardStore.getSurName }}</p>
+
+        <!-- Getter für die Straße -->
+        <p>{{ stateCardStore.getAddressStreet }}</p>
+
+        <!-- Getter für die PLZ und die Stadt -->
+        <p>
+          {{ stateCardStore.getAddressZipCode }}
+          {{ stateCardStore.getAddressCity }}
+        </p>
+
+        <!-- Getter für das Geburtsdatum -->
+        <p>geb. {{ stateCardStore.getDayOfBirth }}</p>
       </div>
+
       <div class="history-btn">
         <button @click="routeSelectServices" class="service-btn">
           ++Service
@@ -16,13 +30,15 @@
     </div>
 
     <div class="history-container">
-      <!--  <p>{{ service.title }}</p>-->
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus</p>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus</p>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus</p>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus</p>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus</p>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus</p>
+      <!-- Iteriere über die Sessions im cardData -->
+      <div v-for="session in stateCardStore.getSessions" :key="session.id">
+        <p>{{ Date(session.date) }}</p>
+        <div v-for="service in session.services" :key="service.servicesId">
+          <!-- Hier können Sie die relevanten Daten für jeden Service anzeigen. Beispiel: -->
+          <p>Service ID: {{ service.servicesId }}</p>
+        </div>
+        <!-- Andere Informationen über die Session können hier hinzugefügt werden, wenn benötigt. -->
+      </div>
     </div>
   </div>
   <div class="btn-container">
@@ -33,36 +49,29 @@
 </template>
 
 <script>
-import { useServiceStore } from "@/stores/ServiceStore";
-import { useCustomerStore } from "@/stores/CustomerStore";
-import AppFooter from "@/components/AppFooter.vue";
+import { useStateCardStore } from "@/stores/StateCardStore";
 import AppHeader from "@/components/AppHeader.vue";
+import AppFooter from "@/components/AppFooter.vue";
 
 export default {
   components: {
-    AppFooter,
     AppHeader,
+    AppFooter,
   },
-  data() {
-    return {
-      customerStore: useCustomerStore(),
-      serviceStore: useServiceStore(),
-      customer: null,
-      customerId: this.$route.params.id,
-      serviceId: this.$route.params.id,
-      service: [],
-    };
+  computed: {
+    customerId() {
+      return this.$route.params.id;
+    },
+    stateCardStore() {
+      return useStateCardStore();
+    },
   },
   created() {
-    this.loadCustomer();
-    this.loadService();
+    this.loadStateCardStore();
   },
   methods: {
-    loadCustomer() {
-      this.customer = this.customerStore.getCustomerById(this.customerId);
-    },
-    loadService() {
-      this.service = this.serviceStore.getServiceById(this.serviceId);
+    loadStateCardStore() {
+      this.stateCardStore.setCustomer(this.customerId);
     },
     routeToHome() {
       this.$router.push("/");
